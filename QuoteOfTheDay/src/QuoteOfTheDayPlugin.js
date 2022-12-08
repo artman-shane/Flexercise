@@ -1,0 +1,27 @@
+import React from 'react';
+import { FlexPlugin } from '@twilio/flex-plugin';
+import QuoteComponent from './components/Quote/Quote';
+
+import CustomTaskList from './components/CustomTaskList/CustomTaskList';
+
+const PLUGIN_NAME = 'QuoteOfTheDayPlugin';
+
+export default class QuoteOfTheDayPlugin extends FlexPlugin {
+  constructor() {
+    super(PLUGIN_NAME);
+  }
+
+  /**
+   * This code is run when your plugin is being started
+   * Use this to modify any UI components or attach to the actions framework
+   *
+   * @param flex { typeof import('@twilio/flex-ui') }
+   */
+  async init(flex, manager) {
+    flex.NoTasksCanvas.Content.remove('first-line');
+    flex.NoTasksCanvas.Content.remove('second-line');
+    flex.NoTasksCanvas.Content.remove('hint');
+
+    flex.NoTasksCanvas.Content.add(<QuoteComponent key="qotd" />, { sortOrder: -1 });
+  }
+}

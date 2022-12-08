@@ -1,0 +1,35 @@
+#install node version mgr: https://github.com/nvm-sh/nvm
+npm install twilio-cli
+twilio update
+twilio plugins:install @twilio-labs/plugin-flex@4.3.0-flex-ui-2.1
+nvm install 18
+
+# Start plugin locally
+twilio flex:plugins:start
+
+# Build, deploy and create a new major version of the plugin
+twilio flex:plugins:deploy --major --changelog "<Changelog Details>" --description "Description"
+
+# Create a configuration and a release with the new version of the plugin
+twilio flex:plugins:release --plugin <ver rec'd when deploying or ver you wish to enable> --name "Release Name" --description "Description for the Release"
+
+
+
+#   │   Setup:                                                           │
+#   │   $ cd CustomReactComponent/                                       │
+#   │   $ npm install                                                    │
+#   │                                                                    │
+#   │   Development:                                                     │
+#   │   $ cd CustomReactComponent/                                       │
+#   │   $ twilio flex:plugins:start                                      │
+#   │                                                                    │
+#   │   Build Command:                                                   │
+#   │   $ cd CustomReactComponent/                                       │
+#   │   $ twilio flex:plugins:build                                      │
+#   │                                                                    │
+#   │   Deploy Command:                                                  │
+#   │   $ cd CustomReactComponent/                                       │
+#   │   $ twilio flex:plugins:deploy                                     │
+#   │                                                                    │
+#   │   For more info check the README.md file or go to:                 │
+#   │   ➡ https://www.twilio.com/docs/flex            
